@@ -10,7 +10,7 @@ public class AuthValidator : AbstractValidator<AuthRequest>
             .NotEmpty().WithMessage("O campo Email é obrigatório.")
             .EmailAddress().WithMessage("Email inválido.");
 
-        RuleFor(x => x.PasswordHash)
+        RuleFor(x => x.Password)
             .NotEmpty().WithMessage("A senha é obrigatória.");
     }
 }

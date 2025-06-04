@@ -22,7 +22,7 @@ public class AuthController(IAuthService service) : ControllerBase
             var user = new User
             {
                 Email = request.Email,
-                PasswordHash = request.PasswordHash
+                PasswordHash = request.Password
             };
 
             await service.Register(user);
@@ -46,7 +46,7 @@ public class AuthController(IAuthService service) : ControllerBase
             var user = new User
             {
                 Email = request.Email,
-                PasswordHash = request.PasswordHash
+                PasswordHash = request.Password
             };
 
             var token = await service.LoginAsync(user);
