@@ -34,6 +34,7 @@ public class ServiceConfiguration
         builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
         builder.Services.AddScoped<ISignatoryRepository, SignatoryRepository>();
         builder.Services.AddScoped<IAuthService, AuthService>();
+        builder.Services.AddScoped<IJwtService, JwtService>();
         
         var key = builder.Configuration["Jwt:Key"]
                   ?? throw new InvalidOperationException("JWT Key not configured");

@@ -9,7 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Api.BizSign.Core.Services;
 
-public class AuthService(IUserRepository repo, IConfiguration config) : IAuthService
+public class AuthService(IUserRepository repo, IConfiguration config, IJwtService jwtService) : IAuthService
 {
     public async Task<User?> Register(User user)
     {
@@ -31,28 +31,6 @@ public class AuthService(IUserRepository repo, IConfiguration config) : IAuthSer
         if (user == null || !BCrypt.Net.BCrypt.Verify(login.PasswordHash, user.PasswordHash))
             throw new InvalidCredentialsException();
 
-        return GenerateJwt(user.Email, user.Id);
-    }
-    
-    private string GenerateJwt(string email, Guid userId)
-    {
-        var key = Encoding.UTF8.GetBytes(config["Jwt:Key"] ?? string.Empty);
-        
-        var claims = new[]
-        {
-            new Claim(ClaimTypes.Name, email),
-            new Claim(ClaimTypes.NameIdentifier, userId.ToString())
-        };
-
-        var token = new JwtSecurityToken(
-            claims: claims,
-            expires: DateTime.UtcNow.AddHours(2),
-            signingCredentials: new SigningCredentials(
-                new SymmetricSecurityKey(key),
-                SecurityAlgorithms.HmacSha256
-            )
-        );
-
-        return new JwtSecurityTokenHandler().WriteToken(token);
+        return jwtService.GenerateToken(user.Email, user.Id);
     }
 }
