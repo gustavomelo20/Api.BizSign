@@ -1,0 +1,6 @@
+@Api.BizSign_HostAddress = http://localhost:5039
+
+GET {{Api.BizSign_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
