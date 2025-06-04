@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Api.BizSign.Core.Models;
+using Api.BizSign.Core.Services.Contracts;
+using Microsoft.AspNetCore.Mvc;
 using Api.BizSign.Exceptions;
-using Api.BizSign.Models;
-using Api.BizSign.Request;
-using Api.BizSign.Services.Contracts;
+
+using Api.BizSign.WebApi.Request;
 using FluentValidation;
 
-namespace Api.BizSign.Controllers;
+namespace Api.BizSign.WebApi.Controllers;
 
 [ApiController]
 [Route("api/auth")]

@@ -1,13 +1,13 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Api.BizSign.Core.Models;
+using Api.BizSign.Core.Services.Contracts;
 using Api.BizSign.Exceptions;
-using Api.BizSign.Models;
-using Api.BizSign.Repositories.Contract;
-using Api.BizSign.Services.Contracts;
+using Api.BizSign.Infrastructure.Repositories.Contract;
 using Microsoft.IdentityModel.Tokens;
 
-namespace Api.BizSign.Services;
+namespace Api.BizSign.Core.Services;
 
 public class AuthService(IUserRepository repo, IConfiguration config) : IAuthService
 {

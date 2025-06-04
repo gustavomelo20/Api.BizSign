@@ -1,20 +1,19 @@
 ﻿using System.Text;
-using Api.BizSign.Data;
-using Api.BizSign.Repositories;
-using Api.BizSign.Repositories.Contract;
-using Api.BizSign.Request;
-using Api.BizSign.Request.Validators;
-using Api.BizSign.Services;
-using Api.BizSign.Services.Contracts;
+using Api.BizSign.Core.Services;
+using Api.BizSign.Core.Services.Contracts;
+using Api.BizSign.Infrastructure.Data;
+using Api.BizSign.Infrastructure.Repositories;
+using Api.BizSign.Infrastructure.Repositories.Contract;
+using Api.BizSign.WebApi.Request;
+using Api.BizSign.WebApi.Request.Validators;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+
 using Microsoft.IdentityModel.Tokens;
 
-namespace Api.BizSign.Configuration;
+namespace Api.BizSign.Infrastructure.Configuration;
 
 public class ServiceConfiguration
 {

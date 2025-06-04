@@ -1,11 +1,10 @@
-﻿using System.Security.Claims;
-using Api.BizSign.Models;
-using Api.BizSign.Repositories.Contract;
-using Api.BizSign.Request;
+﻿using Api.BizSign.Core.Models;
+using System.Security.Claims;
+using Api.BizSign.Infrastructure.Repositories.Contract;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.BizSign.Controllers;
+namespace Api.BizSign.WebApi.Controllers;
 
 [Route("api/document")]
 public class DocumentController : Controller

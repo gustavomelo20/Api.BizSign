@@ -1,6 +1,6 @@
-﻿using Api.BizSign.Models;
+﻿using Api.BizSign.Core.Models;
 
-namespace Api.BizSign.Repositories.Contract;
+namespace Api.BizSign.Infrastructure.Repositories.Contract;
 
 public interface IUserRepository
 {

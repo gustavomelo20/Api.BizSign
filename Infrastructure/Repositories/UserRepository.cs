@@ -1,10 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Api.BizSign.Data;
-using Api.BizSign.Models;
-using Api.BizSign.Repositories.Contract;
+﻿using Api.BizSign.Core.Models;
+using Microsoft.EntityFrameworkCore;
+using Api.BizSign.Infrastructure.Data;
+using Api.BizSign.Infrastructure.Repositories.Contract;
 
+namespace Api.BizSign.Infrastructure.Repositories;
 
-namespace Api.BizSign.Repositories;
 public class UserRepository : IUserRepository
 {
     private readonly DatabaseContext _dbContext;

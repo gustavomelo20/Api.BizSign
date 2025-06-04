@@ -1,4 +1,4 @@
-﻿namespace Api.BizSign.Request;
+﻿namespace Api.BizSign.WebApi.Request;
 
 public class SignatoryRequest
 {

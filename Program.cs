@@ -1,4 +1,6 @@
-using Api.BizSign.Configuration;
+
+
+using Api.BizSign.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder = ServiceConfiguration.Build(builder);

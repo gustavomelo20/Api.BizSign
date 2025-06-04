@@ -1,6 +1,6 @@
-﻿using Api.BizSign.Models;
+﻿using Api.BizSign.Core.Models;
 
-namespace Api.BizSign.Services.Contracts;
+namespace Api.BizSign.Core.Services.Contracts;
 
 public interface IAuthService
 {

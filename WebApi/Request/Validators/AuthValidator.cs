@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Api.BizSign.Request.Validators;
+namespace Api.BizSign.WebApi.Request.Validators;
 
 public class AuthValidator : AbstractValidator<AuthRequest>
 {

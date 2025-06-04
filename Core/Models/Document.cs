@@ -1,4 +1,4 @@
-﻿namespace Api.BizSign.Models;
+﻿namespace Api.BizSign.Core.Models;
 
 public class Document
 {

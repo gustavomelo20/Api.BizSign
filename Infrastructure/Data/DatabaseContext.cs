@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Api.BizSign.Models;
+﻿using Api.BizSign.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace Api.BizSign.Data;
+
+namespace Api.BizSign.Infrastructure.Data;
 
 
 public class DatabaseContext : DbContext
