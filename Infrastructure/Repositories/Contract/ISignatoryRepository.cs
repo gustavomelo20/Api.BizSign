@@ -4,5 +4,5 @@ namespace Api.BizSign.Infrastructure.Repositories.Contract;
 
 public interface ISignatoryRepository
 {
-    public Task<Signatory>  CreateAsync(Signatory signatory);
+    public Task<Signatory> CreateAsync(Signatory signatory);
 }

@@ -14,14 +14,14 @@ public class DocumentRepository : IDocumentRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<Document?> CreateAsync(Document document)
     {
         _dbContext.Documents.Add(document);
         await _dbContext.SaveChangesAsync();
         return document;
     }
-    
+
     public async Task<List<Document>> GetByOwnerIdAsync(string ownerId)
     {
         return await _dbContext.Documents

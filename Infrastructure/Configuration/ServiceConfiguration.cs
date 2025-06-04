@@ -10,7 +10,6 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
 using Microsoft.IdentityModel.Tokens;
 
 namespace Api.BizSign.Infrastructure.Configuration;
@@ -29,22 +28,22 @@ public class ServiceConfiguration
                 builder.Configuration.GetValue<string>("MONGODB_DATABASE") ?? ""
             )
         );
-        
+
         builder.Services.AddScoped<IUserRepository, UserRepository>();
         builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
         builder.Services.AddScoped<ISignatoryRepository, SignatoryRepository>();
         builder.Services.AddScoped<IAuthService, AuthService>();
         builder.Services.AddScoped<IJwtService, JwtService>();
-        
+
         var key = builder.Configuration["Jwt:Key"]
                   ?? throw new InvalidOperationException("JWT Key not configured");
 
         var keyBytes = Encoding.UTF8.GetBytes(key);
-        
+
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters()
+                options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = false,
                     ValidateAudience = false,
@@ -55,7 +54,7 @@ public class ServiceConfiguration
             });
 
 
-        builder.Services.AddControllers(); 
+        builder.Services.AddControllers();
 
         builder.Services.AddCors(options =>
         {
@@ -67,10 +66,10 @@ public class ServiceConfiguration
                     .AllowAnyMethod();
             });
         });
-        
+
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
+
         builder.Services.AddScoped<IValidator<AuthRequest>, AuthValidator>();
         builder.Services.Configure<ApiBehaviorOptions>(options =>
         {
@@ -91,7 +90,7 @@ public class ServiceConfiguration
                 });
             };
         });
-        
+
         return builder;
     }
 }

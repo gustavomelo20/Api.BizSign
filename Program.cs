@@ -1,5 +1,3 @@
-
-
 using Api.BizSign.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);

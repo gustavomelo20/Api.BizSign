@@ -10,7 +10,7 @@ namespace Api.BizSign.WebApi.Controllers;
 public class DocumentController : Controller
 {
     private readonly IDocumentRepository _repo;
-     
+
     [Authorize]
     [HttpGet]
     public async Task<IActionResult> Get()
@@ -18,25 +18,25 @@ public class DocumentController : Controller
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrEmpty(userIdClaim))
             return Unauthorized(new { message = "Token inválido ou usuário não identificado" });
-        
-        
+
+
         var documents = await _repo.GetByOwnerIdAsync(userIdClaim);
 
         return Ok(documents);
     }
-    
-    
+
+
     [HttpPost("add")]
     public async Task<IActionResult> SaveDocument([FromForm] Document document)
     {
         var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrEmpty(userIdClaim))
             return Unauthorized(new { message = "Token inválido ou usuário não identificado" });
-        
+
         document.OwnerID = userIdClaim;
-        
+
         await _repo.CreateAsync(document);
-        
+
         return Ok(new { message = "Documento criado com sucesso" });
     }
 }

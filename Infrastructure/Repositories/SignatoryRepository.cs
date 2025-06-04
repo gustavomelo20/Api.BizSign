@@ -14,7 +14,7 @@ public class SignatoryRepository : ISignatoryRepository
     {
         _dbContext = dbContext;
     }
-    
+
     public async Task<Signatory> CreateAsync(Signatory signatory)
     {
         _dbContext.Signatories.Add(signatory);

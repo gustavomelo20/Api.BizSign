@@ -2,7 +2,6 @@
 using Api.BizSign.Core.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Api.BizSign.Exceptions;
-
 using Api.BizSign.WebApi.Request;
 using FluentValidation;
 
@@ -16,7 +15,8 @@ public class AuthController(IAuthService service) : ControllerBase
     public async Task<IActionResult> Register(
         [FromServices] IValidator<AuthRequest> validator,
         [FromBody] AuthRequest request
-    ) {
+    )
+    {
         try
         {
             var user = new User
@@ -26,7 +26,7 @@ public class AuthController(IAuthService service) : ControllerBase
             };
 
             await service.Register(user);
-            
+
             return Ok(new { message = "Usuário criado com sucesso" });
         }
         catch (EmailInUseException ex)
@@ -39,7 +39,8 @@ public class AuthController(IAuthService service) : ControllerBase
     public async Task<IActionResult> Login(
         [FromServices] IValidator<AuthRequest> validator,
         [FromBody] AuthRequest request
-    ) {
+    )
+    {
         try
         {
             var user = new User
@@ -47,7 +48,7 @@ public class AuthController(IAuthService service) : ControllerBase
                 Email = request.Email,
                 PasswordHash = request.PasswordHash
             };
-            
+
             var token = await service.LoginAsync(user);
             return Ok(new { token });
         }

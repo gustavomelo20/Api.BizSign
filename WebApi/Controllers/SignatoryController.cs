@@ -1,8 +1,6 @@
-﻿
-using Api.BizSign.Core.Models;
+﻿using Api.BizSign.Core.Models;
 using Api.BizSign.Infrastructure.Repositories.Contract;
 using Microsoft.AspNetCore.Authorization;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.BizSign.WebApi.Controllers;
@@ -18,14 +16,15 @@ public class SignatoryController : Controller
         _repo = repo;
         _config = config;
     }
-    
+
     [Authorize]
     [HttpGet]
     public IActionResult Get()
     {
         var signatory = new List<object>
         {
-            new {
+            new
+            {
                 id = 1,
                 nome = "Gustavo Silva",
                 email = "joao.silva@email.com",
@@ -35,7 +34,8 @@ public class SignatoryController : Controller
                 status = "Ativo",
                 documentos = 12
             },
-            new {
+            new
+            {
                 id = 2,
                 nome = "Maria Santos",
                 email = "maria.santos@email.com",
@@ -45,7 +45,8 @@ public class SignatoryController : Controller
                 status = "Ativo",
                 documentos = 8
             },
-            new {
+            new
+            {
                 id = 3,
                 nome = "Pedro Costa",
                 email = "pedro.costa@email.com",
@@ -55,7 +56,8 @@ public class SignatoryController : Controller
                 status = "Inativo",
                 documentos = 5
             },
-            new {
+            new
+            {
                 id = 4,
                 nome = "Ana Oliveira",
                 email = "ana.oliveira@email.com",
@@ -71,14 +73,14 @@ public class SignatoryController : Controller
 
         return Ok(response);
     }
-    
+
     [Authorize]
     [HttpPost("add")]
     public async Task<IActionResult> Register([FromBody] Signatory signatory)
     {
         //signatory.Id = Guid.NewGuid();
         await _repo.CreateAsync(signatory);
-        
+
         return Ok(new { message = "Signatario criado com sucesso" });
     }
 }
